@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RideConnect — Book a Ride</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div id="app">
+
+  <!-- ============ TOP BAR ============ -->
+  <header class="topbar">
+    <div class="brand">Ride<span>Connect</span></div>
+    <div id="userBadge" class="user-badge hidden">
+      <span id="userName"></span>
+      <button id="logoutBtn" class="btn-link">Log out</button>
+    </div>
+  </header>
+
+  <!-- ============ AUTH VIEW ============ -->
+  <section id="view-auth" class="view">
+    <div class="card auth-card">
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="login">Log In</button>
+        <button class="tab-btn" data-tab="register">Register</button>
+      </div>
+
+      <form id="loginForm" class="tab-panel active">
+        <label>Email
+          <input type="email" id="loginEmail" required />
+        </label>
+        <label>Password
+          <input type="password" id="loginPassword" required />
+        </label>
+        <button type="submit" class="btn-primary">Log In</button>
+        <p class="form-msg" id="loginMsg"></p>
+      </form>
+
+      <form id="registerForm" class="tab-panel">
+        <label>Full Name
+          <input type="text" id="regName" required />
+        </label>
+        <label>Email
+          <input type="email" id="regEmail" required />
+        </label>
+        <label>Phone
+          <input type="tel" id="regPhone" required />
+        </label>
+        <label>Password
+          <input type="password" id="regPassword" required minlength="6" />
+        </label>
+        <button type="submit" class="btn-primary">Create Account</button>
+        <p class="form-msg" id="registerMsg"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ BOOKING VIEW ============ -->
+  <section id="view-booking" class="view hidden">
+    <div id="bookingMap" class="map"></div>
+
+    <div class="sheet">
+      <div class="field-row">
+        <span class="dot pickup-dot"></span>
+        <input type="text" id="pickupLabel" placeholder="Fetching your location..." readonly />
+        <button id="refreshLocationBtn" class="btn-icon" title="Refresh GPS location">⟳</button>
+      </div>
+      <div class="field-row">
+        <span class="dot dest-dot"></span>
+        <input type="text" id="destInput" placeholder="Where to? Type an address and press Enter, or tap the map" />
+      </div>
+
+      <div id="fareBox" class="fare-box hidden">
+        <div><strong>Estimated fare:</strong> <span id="fareAmount">–</span></div>
+        <div class="muted"><span id="fareDistance"></span> · <span id="fareDuration"></span></div>
+      </div>
+
+      <label class="payment-label">Payment method
+        <select id="paymentMethod">
+          <option value="cash">Cash</option>
+          <option value="card">Card (coming soon)</option>
+          <option value="wallet">Wallet (coming soon)</option>
+        </select>
+      </label>
+
+      <button id="requestRideBtn" class="btn-primary" disabled>Request Ride</button>
+      <p class="form-msg" id="bookingMsg"></p>
+    </div>
+  </section>
+
+  <!-- ============ SEARCHING VIEW ============ -->
+  <section id="view-searching" class="view hidden">
+    <div class="center-col">
+      <div class="pulse-dot"></div>
+      <h2>Looking for nearby drivers...</h2>
+      <p class="muted">This usually takes under a minute</p>
+      <button id="cancelSearchBtn" class="btn-secondary">Cancel Request</button>
+    </div>
+  </section>
+
+  <!-- ============ TRACKING VIEW ============ -->
+  <section id="view-tracking" class="view hidden">
+    <div id="trackingMap" class="map"></div>
+
+    <div class="sheet">
+      <div id="tripStatusBanner" class="status-banner">Driver assigned</div>
+
+      <div class="driver-card">
+        <div class="driver-avatar">🚗</div>
+        <div class="driver-info">
+          <div id="driverName" class="driver-name">—</div>
+          <div id="driverRating" class="muted">★ –</div>
+        </div>
+        <button id="chatToggleBtn" class="btn-icon" title="Chat with driver">💬</button>
+      </div>
+
+      <button id="cancelTripBtn" class="btn-secondary">Cancel Trip</button>
+    </div>
+
+    <!-- Chat panel -->
+    <div id="chatPanel" class="chat-panel hidden">
+      <div class="chat-header">
+        <span>Chat with driver</span>
+        <button id="closeChatBtn" class="btn-icon">✕</button>
+      </div>
+      <div id="chatMessages" class="chat-messages"></div>
+      <form id="chatForm" class="chat-input-row">
+        <input type="text" id="chatInput" placeholder="Type a message..." autocomplete="off" />
+        <button type="submit" class="btn-icon">➤</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ RATING VIEW ============ -->
+  <section id="view-rating" class="view hidden">
+    <div class="center-col">
+      <h2>Trip complete!</h2>
+      <p class="muted">How was your ride with <span id="rateDriverName">your driver</span>?</p>
+      <div id="starPicker" class="star-picker">
+        <span data-star="1">★</span><span data-star="2">★</span><span data-star="3">★</span><span data-star="4">★</span><span data-star="5">★</span>
+      </div>
+      <button id="submitRatingBtn" class="btn-primary" disabled>Submit Rating</button>
+      <button id="skipRatingBtn" class="btn-link">Skip</button>
+    </div>
+  </section>
+
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
