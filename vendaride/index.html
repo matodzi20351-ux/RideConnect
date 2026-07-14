@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VENDARIDE — Your Ride, Your Way</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-theme="dark">
+
+<header>
+  <nav>
+    <div class="logo"><span class="dot"></span>VENDA<span>RIDE</span></div>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="#fare">Fare Estimate</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+  <button class="icon-btn" id="themeToggle" title="Toggle theme">🌙</button>
+
+  <button class="btn btn-ghost"
+          onclick="window.location.href='https://rideconnect-customer.onrender.com'">
+    Login
+  </button>
+
+  <button class="btn btn-primary"
+          onclick="window.location.href='https://rideconnect-driver.onrender.com'">
+    Become a Driver
+  </button>
+
+  <button class="burger" id="burgerBtn">☰</button>
+</div>  
+  </nav>
+</header>
+
+<section class="hero">
+  <div>
+    <div class="badge"><span class="pulse"></span> Live in East London &amp; growing</div>
+    <h1>Your ride is<br><span>closer than you think.</span></h1>
+    <p class="lead">VENDARIDE connects you to trusted local drivers in minutes. Real-time tracking, upfront fares, and a safer way to move around town.</p>
+    <div class="hero-actions">
+      <button class="btn btn-primary btn-lg" onclick="openModal('signup')">Get Started — It's Free</button>
+      <button class="btn btn-ghost btn-lg" onclick="openModal('login')">I already have an account</button>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>4.9★</b><span>Average rating</span></div>
+      <div class="stat"><b>&lt;5 min</b><span>Avg. pickup time</span></div>
+      <div class="stat"><b>24/7</b><span>Always available</span></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-img-card">
+      <img src="image.png" alt="Driver taking a passenger on a ride through the city">
+    </div>
+    <div class="float-card one">
+      <div class="ic">🚗</div>
+      <div><b>Driver arriving</b><small>2 mins away</small></div>
+    </div>
+    <div class="float-card two">
+      <div class="ic">⭐</div>
+      <div><b>Trip completed</b><small>Rated 5 stars</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="section-head">
+    <div class="kicker">Why VendaRide</div>
+    <h2>Everything you need for the ride</h2>
+    <p>Built for passengers and drivers who want a simple, safe, transparent way to get moving.</p>
+  </div>
+  <div class="grid-4">
+    <div class="feat-card"><div class="feat-ic">📍</div><h3>Live Tracking</h3><p>Watch your driver approach on the map in real time, from pickup to drop-off.</p></div>
+    <div class="feat-card"><div class="feat-ic">💬</div><h3>In-App Chat</h3><p>Message your driver directly to coordinate pickup without sharing your number.</p></div>
+    <div class="feat-card"><div class="feat-ic">💳</div><h3>Upfront Fares</h3><p>Know exactly what you'll pay before you request — no surprises at drop-off.</p></div>
+    <div class="feat-card"><div class="feat-ic">🛡️</div><h3>Verified Drivers</h3><p>Every driver is license-checked and vehicle-verified before they go online.</p></div>
+  </div>
+</section>
+
+<section id="how" style="background:var(--bg-alt);">
+  <div class="section-head">
+    <div class="kicker">Simple by design</div>
+    <h2>How VendaRide works</h2>
+  </div>
+  <div class="steps">
+    <div class="step"><div class="num">1</div><h3>Set your destination</h3><p>Pop in where you're headed and get an instant fare estimate.</p></div>
+    <div class="step"><div class="num">2</div><h3>Get matched</h3><p>A nearby verified driver accepts your trip and heads your way.</p></div>
+    <div class="step"><div class="num">3</div><h3>Ride &amp; rate</h3><p>Track your trip live, arrive safely, then rate your experience.</p></div>
+  </div>
+</section>
+
+<section id="fare">
+  <div class="section-head">
+    <div class="kicker">Surprise: Try it now</div>
+    <h2>Get an instant fare estimate</h2>
+    <p>Drag the slider — no account needed to see what your trip could cost.</p>
+  </div>
+  <div class="estimator">
+    <div>
+      <h3>Fare Calculator</h3>
+      <p>Estimates use a simple base-fare + per-km model. Actual fares may vary with traffic and demand.</p>
+      <div class="field">
+        <label>Trip distance: <span class="distance-val" id="distLabel">8</span> km</label>
+        <input type="range" id="distSlider" min="1" max="40" value="8">
+      </div>
+      <div class="field">
+        <label>Vehicle type</label>
+        <select id="vehicleType">
+          <option value="1">Standard</option>
+          <option value="1.3">Comfort</option>
+          <option value="1.7">XL (up to 6 seats)</option>
+        </select>
+      </div>
+    </div>
+    <div class="fare-result">
+      <div class="amount" id="fareAmount">R 40</div>
+      <small>Estimated total fare (ZAR)</small>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg-alt);">
+  <div class="section-head">
+    <div class="kicker">Loved by our community</div>
+    <h2>What riders are saying</h2>
+  </div>
+  <div class="testi-wrap">
+    <div class="testi-card" id="testiCard">
+      <div class="testi-stars">★★★★★</div>
+      <p id="testiText">"Booked a ride at 11pm and my driver arrived in under 4 minutes. Felt completely safe the whole trip."</p>
+      <div class="testi-who" id="testiWho">Lutendo m.<span>VENDA</span></div>
+    </div>
+    <div class="testi-dots" id="testiDots"></div>
+  </div>
+</section>
+
+<section>
+  <div class="safety wrap" style="max-width:1160px;">
+    <div><div class="ic">🪪</div><h4>ID Verified</h4><p>Every driver's license checked</p></div>
+    <div><div class="ic">📡</div><h4>Live GPS Sharing</h4><p>Share your trip with anyone</p></div>
+    <div><div class="ic">🚨</div><h4>In-App Support</h4><p>Report an issue in seconds</p></div>
+    <div><div class="ic">💯</div><h4>Rating System</h4><p>Two-way ratings keep quality high</p></div>
+  </div>
+</section>
+
+<section id="faq" style="background:var(--bg-alt);">
+  <div class="section-head">
+    <div class="kicker">Questions</div>
+    <h2>Frequently asked</h2>
+  </div>
+  <div class="faq" id="faqList">
+    <div class="faq-item open">
+      <div class="faq-q">Is VendaRide available in my area? <span class="chev">+</span></div>
+      <div class="faq-a">We're currently live in VENDA and expanding to nearby towns every month. Sign up to get notified when we launch near you.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How do I become a driver? <span class="chev">+</span></div>
+      <div class="faq-a">Tap "Create Account", choose Driver, and upload your license and vehicle details. Our team reviews applications within 48 hours.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What payment methods are supported? <span class="chev">+</span></div>
+      <div class="faq-a">Cash is supported at launch, with card and wallet payments coming soon.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is it safe to ride at night? <span class="chev">+</span></div>
+      <div class="faq-a">Every driver is verified, every trip is trackable live, and you can share your trip status with a trusted contact at any time.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="cta-band">
+    <div>
+      <h2>Ready to move smarter?</h2>
+      <p>Create your free VendaRide account in under a minute.</p>
+    </div>
+    <button class="btn btn-lg" onclick="openModal('signup')">Create Account</button>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-head">
+    <div class="kicker">Get in touch</div>
+    <h2>We'd love to hear from you</h2>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="item"><div class="ic">📞</div><div><b>Call or WhatsApp</b><span>0608418390</span></div></div>
+      <div class="item"><div class="ic">✉️</div><div><b>Email</b><span>mutswaletswalematodzi@gmail.com</span></div></div>
+      <div class="item"><div class="ic">📍</div><div><b>Based in</b><span>East London, Eastern Cape, South Africa</span></div></div>
+    </div>
+    <form class="contact-form" id="contactForm">
+      <div class="field"><label>Your name</label><input type="text" required placeholder="Full name"></div>
+      <div class="field"><label>Email</label><input type="email" required placeholder="you@example.com"></div>
+      <div class="field"><label>Message</label><textarea rows="3" required placeholder="How can we help?"></textarea></div>
+      <button type="submit" class="btn btn-primary" style="width:100%;">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <div class="logo" style="font-size:19px;"><span class="dot"></span>VENDA<span>RIDE</span></div>
+    <div class="foot-links">
+      <a href="#features">Features</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="foot-links">
+      <span>📞 0608418390</span>
+      <span>✉️ mutswaletswalematodzi@gmail.com</span>
+    </div>
+  </div>
+  <div class="credit">Created by <b>Mutswaletswale Matodzi</b> &middot; &copy; <span id="year"></span> VendaRide. All rights reserved.</div>
+</footer>
+
+<button class="whatsapp-fab" title="Chat on WhatsApp" onclick="window.open('https://wa.me/27608418390','_blank')">💬</button>
+
+<!-- Auth Modal -->
+<div class="modal-overlay" id="authOverlay">
+  <div class="modal">
+    <button class="close" onclick="closeModal()">✕</button>
+    <div class="role-toggle">
+      <button id="roleRider" class="active" onclick="setRole('rider')">Rider</button>
+      <button id="roleDriver" onclick="setRole('driver')">Driver</button>
+    </div>
+    <h3 id="modalTitle">Create your account</h3>
+    <p class="sub" id="modalSub">Join VendaRide and get moving in minutes.</p>
+    <form id="authForm">
+      <div class="field" id="nameField"><label>Full name</label><input type="text" placeholder="Your name" required></div>
+      <div class="field"><label>Phone number</label><input type="tel" placeholder="06X XXX XXXX" required></div>
+      <div class="field"><label>Email</label><input type="email" placeholder="you@example.com" required></div>
+      <div class="field"><label>Password</label><input type="text" placeholder="Choose a password" required></div>
+      <button type="submit" class="btn btn-primary" style="width:100%; margin-top:6px;" id="authSubmitBtn">Create Account</button>
+    </form>
+    <div class="switch" id="modalSwitch">Already have an account? <a onclick="openModal('login')">Log in</a></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"><span class="dot"></span><span id="toastMsg"></span></div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
